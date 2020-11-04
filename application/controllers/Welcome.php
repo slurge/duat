@@ -18,9 +18,36 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper('url_helper');
+    }
+
 	public function index()
 	{
-		//$this->load->view('welcome_message');
-		echo 'aber';
+		$data = array(
+			'logo' => site_url('assets/img/eyes.png'),
+			'title' => 'Duauth Autenticador Inteligente'
+		);
+		$this->load->view('landing/head', $data);
+		$this->load->view('landing/navbar');
+		$this->load->view('landing/landing');
+		$this->load->view('landing/footer');
+		$this->load->view('landing/tail');
+	}
+
+	public function privacy()
+	{
+		$data = array(
+			'logo' => site_url('assets/img/eyes.png'),
+			'title' => 'Duauth Autenticador Inteligente'
+		);
+		$this->load->view('landing/head', $data);
+		$this->load->view('landing/navbar');
+		$this->load->view('landing/privacy');
+		$this->load->view('landing/footer');
+		$this->load->view('landing/tail');
 	}
 }
