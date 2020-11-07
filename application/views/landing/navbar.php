@@ -24,18 +24,6 @@
     .modal-footer {
         border: none;
     }
-    .btn-primary {
-        color: #fff;
-        background-color: #FF7F11;
-        border-color: #FF7F11;
-        border-radius: 0.6em !important;
-    }
-
-    .btn-primary:hover {
-        color: #fff;
-        background-color: #CC5F00;
-        border-color: #CC5F00;
-    }
     .modal a{
         color:#16324F
     }
@@ -47,25 +35,6 @@
         border-left: none;
     }
 </style>
-
-<!--nav bar-->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-    <a class="navbar-brand" href="<?= site_url() ?>">
-        <img class="nav-logo" src="<?= $logo ?>" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Acceder  <i class="fas fa-sign-in-alt"></i></a>
-            </li>
-        </ul>
-    </div>
-</nav>
 
 <!--login modal-->
 
@@ -96,7 +65,7 @@
             </div>
             <div class="d-flex justify-content-between">
                 <div class="align-items-center d-flex">
-                    <a href="#">Registrarse <i class="fas fa-user-plus"></i></a>
+                    <a href="<?= site_url('clients/signup') ?>">Registrarse <i class="fas fa-user-plus"></i></a>
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar sesión <i class="fas fa-sign-in-alt"></i></button>
             </div>
@@ -106,3 +75,23 @@
     </div>
   </div>
 </div>
+
+<!--nav bar-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="<?= site_url() ?>">
+        <img class="nav-logo" src="<?= $logo ?>" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Acceder  <i class="fas fa-sign-in-alt"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+

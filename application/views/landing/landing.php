@@ -4,12 +4,6 @@
         padding-top: 4em;
         padding-bottom: 4em;
     }
-    body{
-        color: #232629 !important;
-    }
-    p{
-        font-size:24px;
-    }
     .content{
         padding-top: 4em;
         padding-bottom: 4em;
@@ -20,28 +14,15 @@
         color: white !important;
     }
 
-    .cta {
-        color: #fff;
-        background-color: #FF7F11;
-        border-color: #FF7F11;
-        padding: 1em !important;
-        border-radius: 0.6em !important;
-        font-size: 25px !important;
-    }
-
-    .cta:hover {
-        color: #fff;
-        background-color: #CC5F00;
-        border-color: #CC5F00;
-    }
 </style>
-<!--https://coolors.co/2a628f-13293d-16324f-18435a-b1dcfc  https://coolors.co/355834-cc5f00-16324f-6b0504-b1dcfc-->
+<!-- https://coolors.co/355834-cc5f00-16324f-6b0504-b1dcfc -->
+
 
 <div class="container-fluid head-landing px-5">
     <div class="row">
         <div class="col p-3 align-items-center d-flex flex-column">
             <h1 class="display-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
-            <div class="d-flex justify-content-start">
+            <div class="text-left">
                 <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
             </div>
         </div>
