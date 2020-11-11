@@ -1,9 +1,14 @@
 /* https://coolors.co/355834-cc5f00-16324f-901c14-b1dcfc */
 body{
     color: #232629 !important;
+    min-height: 100vh;
 }
 p{
     font-size:24px;
+}
+
+.color-blood{
+    color: #901c14;
 }
 
 .color-orange{
@@ -18,7 +23,7 @@ a.color-orange:hover{
     background-color: #FF7F11;
     border-color: #FF7F11;
     padding: 1em !important;
-    border-radius: 0.6em !important;
+    /* border-radius: 0.6em !important; */
     font-size: 24px !important;
 }
 
@@ -33,7 +38,7 @@ a.color-orange:hover{
     color: #fff;
     background-color: #FF7F11;
     border-color: #FF7F11;
-    border-radius: 0.6em !important;
+    /*border-radius: 0.6em !important;*/
 }
 
 .btn-primary:hover {
@@ -42,17 +47,20 @@ a.color-orange:hover{
     border-color: #CC5F00;
 }
 
+/*
 .input-group input {
     border-radius: 0 0.6em 0.6em 0 !important;
 }
-
 .input-group-prepend span {
     border-radius: 0.6em;
 }
-
 .form-control{
     border-radius: 0.6em !important;
 }
+.alert {
+    border-radius: 0.6em;
+}
+*/
 
 .invalid-field{
     width: 100%;
@@ -63,4 +71,26 @@ a.color-orange:hover{
 
 body .form-control.is-invalid, .was-validated .form-control:invalid{
     border-color: #901c14;
+}
+
+span.input-group-text.is-invalid {
+    border-color: #901c14;
+}
+
+.login-form a{
+    color:#16324F
+}
+
+span.input-group-text {
+    background-color: white;
+}
+.login-form input {
+    border-left: none;
+}
+
+
+.alert-danger {
+    background-color: #901c14;
+    border-color: #901c14;
+    color: white;
 }

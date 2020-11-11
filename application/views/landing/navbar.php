@@ -14,7 +14,7 @@
     }
 
     .modal-content {
-        border-radius: 0.6em;
+        /* border-radius: 0.6em; */
         border: none !important;
         padding: 1em;
     }
@@ -24,16 +24,7 @@
     .modal-footer {
         border: none;
     }
-    .modal a{
-        color:#16324F
-    }
-
-    span.input-group-text {
-        background-color: white;
-    }
-    .modal input {
-        border-left: none;
-    }
+    
 </style>
 
 <!--login modal-->
@@ -50,7 +41,7 @@
       </div>
 
       <div class="modal-body">
-        <form action="#">
+        <form action="<?= site_url('clients/login') ?>" method="post" class="login-form">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>

@@ -14,10 +14,10 @@
         color:white;
     }
 </style>
-<footer class="container-fluid py-3 ">
+<footer class="container-fluid py-3 mt-auto">
     <div class="container d-flex justify-content-between">
         <p>Universidad de Guadalajara</p>
-        <p>Duauth Autenticador Inteligente</p>
+        <p> 2020 Duauth Autenticador Inteligente</p>
         <a href="<?= site_url('privacy') ?>">Aviso de Privacidad</a>
     </div>
 </footer>

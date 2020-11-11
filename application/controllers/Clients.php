@@ -9,11 +9,20 @@ class Clients extends CI_Controller{
         $this->load->model('clients_model');
 
         $this->load->helper('form');
+        $this->load->library('session');
+
+        
+        $sess = $this->session->userdata('logged');
+		$this->logged_user = $sess;
     }
 
     public function index()
     {
-        return $this->signup();
+       
+        if (!$this->logged_user) {
+            redirect(site_url('clients/login'));
+        }
+        print_r($this->logged_user);
     }
 
     public function signup()
@@ -37,8 +46,8 @@ class Clients extends CI_Controller{
         if ($this->form_validation->run()) {
             $client_data = array(
                 'mail' => $this->input->post('mail'),
-                'pass' => $this->input->post('pass'),
-                'name' => $this->input->post('name')
+                'pass' => password_hash($this->input->post('pass'), PASSWORD_DEFAULT),
+                'name' => $this->input->post('name'),
             );
             $aber = $this->clients_model->new($client_data);
             print_r($aber);
@@ -58,6 +67,55 @@ class Clients extends CI_Controller{
         }
 
     }
+
+    public function login()
+    {
+        if ( isset($this->logged_user) ) { 
+            redirect(site_url('clients')); 
+        }
+
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules(
+            'mail', 
+            'Correo electrónico',
+            'trim|required'
+        );
+        $this->form_validation->set_rules(
+            'pass', 
+            'Contraseña', 
+            'trim|required'
+        ); 
+
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Iniciar sesión',
+            'styles' => array(
+                site_url('assets/css/main.css')
+            )
+        );
+
+        if ($this->form_validation->run()) {
+            $mail = $this->input->post('mail');
+            $pass = $this->input->post('pass');
+            if ($login = $this->clients_model->get_login($mail, $pass)) {
+                $this->session->set_userdata('logged', $login);
+                return redirect(site_url('clients'));
+            }else{
+                $data['login_error'] = array('desc' => 'Los datos introducidos son incorrectos');
+            }
+        }
+
+        $this->load->view('landing/head', $data);
+        $this->load->view('landing/navbar');
+        $this->load->view('clients/login-form', $data);
+        $this->load->view('landing/footer');
+        $this->load->view('landing/tail', $data);
+    }
     
+    public function logout() {
+		$this->session->sess_destroy();
+		return redirect(site_url('clients/login'));
+	}
     
 }
