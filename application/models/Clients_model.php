@@ -35,6 +35,15 @@ class Clients_model extends CI_Model
 		);
 	}
 
+	public function get($index, $by='mail')
+	{
+		$query = $this->db->get_where($this->table, [$by => $index]);
+		return (
+			$query ?
+				$query->row_array() : NULL
+		);
+	}
+
 	public function get_login($mail, $pass)
 	{
 		$query = $this->db->get_where($this->table, ['mail' => $mail]);
