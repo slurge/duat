@@ -1,5 +1,3 @@
-
-
 <div class="w-100 mr-auto ml-auto main-container">
     <div class="row no-gutters h-100">
         <div class="col-md-2 h-100">
@@ -13,11 +11,5 @@
 
         <div class="col-md-10">
 
-            <div class="p-2">
-                <h1 class="display-1">aber</h1>
+            
 
-            </div>
-
-        </div>
-    </div>
-</div>

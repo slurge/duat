@@ -43,10 +43,13 @@ class Clients extends CI_Controller{
             )
         );
         $data['menu'][$menu] = ' active';
+        $data['userdata'] = $this->logged_user;
 
         $this->load->view('head', $data);
         $this->load->view('clients/navbar');
-        $this->load->view('clients/dashboard');
+        $this->load->view('clients/dashboard-head');
+        $this->load->view('clients/dashpages/home');
+        $this->load->view('clients/dashboard-tail');
         //$this->load->view('footer');
         $this->load->view('tail');
     }
