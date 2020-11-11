@@ -28,6 +28,10 @@ class Clients extends CI_Controller{
 
     public function dashboard($menu = 'home')
     {
+        if (!$this->logged_user) {
+            redirect(site_url('clients/login'));
+        }
+
         $data = array(
             'logo' => site_url('assets/img/eyes.png'),
             'title' => 'Duauth - Dashboard',
@@ -78,8 +82,12 @@ class Clients extends CI_Controller{
                 'pass' => password_hash($this->input->post('pass'), PASSWORD_DEFAULT),
                 'name' => $this->input->post('name'),
             );
-            $aber = $this->clients_model->new($client_data);
-            print_r($aber);
+            $succ = $this->clients_model->new($client_data);
+            if ($succ) {
+                $login = $this->clients_model->get($client_data['mail'], 'mail');
+                $this->session->set_userdata('logged', $login);
+                return redirect(site_url('clients'));
+            }
         }else{
             $data = array(
                 'logo' => site_url('assets/img/eyes.png'),

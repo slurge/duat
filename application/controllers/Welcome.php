@@ -45,7 +45,10 @@ class Welcome extends CI_Controller {
 	{
 		$data = array(
 			'logo' => site_url('assets/img/eyes.png'),
-			'title' => 'Duauth Autenticador Inteligente'
+			'title' => 'Duauth Autenticador Inteligente',
+			'styles' => array(
+				site_url('assets/css/main.css')
+			)
 		);
 		$this->load->view('head', $data);
 		$this->load->view('landing/navbar');
