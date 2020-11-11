@@ -22,7 +22,33 @@ class Clients extends CI_Controller{
         if (!$this->logged_user) {
             redirect(site_url('clients/login'));
         }
-        print_r($this->logged_user);
+        //print_r($this->logged_user);
+        return $this->dashboard();
+    }
+
+    public function dashboard($menu = 'home')
+    {
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Dashboard',
+            'styles' => array(
+                site_url('assets/css/main.css'),
+                site_url('assets/css/dashboard.css')
+            ),
+            'menu' => array(
+                'home' => '',
+                'sites' => '',
+                'users' => '',
+                'settings' => '',
+            )
+        );
+        $data['menu'][$menu] = ' active';
+
+        $this->load->view('head', $data);
+        $this->load->view('clients/navbar');
+        $this->load->view('clients/dashboard');
+        //$this->load->view('footer');
+        $this->load->view('tail');
     }
 
     public function signup()
@@ -59,11 +85,11 @@ class Clients extends CI_Controller{
                     site_url('assets/css/main.css')
                 )
             );
-            $this->load->view('landing/head', $data);
+            $this->load->view('head', $data);
             $this->load->view('landing/navbar');
             $this->load->view('clients/register-form');
-            $this->load->view('landing/footer');
-            $this->load->view('landing/tail');
+            $this->load->view('footer');
+            $this->load->view('tail');
         }
 
     }
@@ -106,11 +132,11 @@ class Clients extends CI_Controller{
             }
         }
 
-        $this->load->view('landing/head', $data);
+        $this->load->view('head', $data);
         $this->load->view('landing/navbar');
         $this->load->view('clients/login-form', $data);
-        $this->load->view('landing/footer');
-        $this->load->view('landing/tail', $data);
+        $this->load->view('footer');
+        $this->load->view('tail', $data);
     }
     
     public function logout() {

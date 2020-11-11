@@ -34,11 +34,11 @@ class Welcome extends CI_Controller {
 				site_url('assets/css/main.css')
 			)
 		);
-		$this->load->view('landing/head', $data);
+		$this->load->view('head', $data);
 		$this->load->view('landing/navbar');
 		$this->load->view('landing/landing');
-		$this->load->view('landing/footer');
-		$this->load->view('landing/tail');
+		$this->load->view('footer');
+		$this->load->view('tail');
 	}
 
 	public function privacy()
@@ -47,10 +47,10 @@ class Welcome extends CI_Controller {
 			'logo' => site_url('assets/img/eyes.png'),
 			'title' => 'Duauth Autenticador Inteligente'
 		);
-		$this->load->view('landing/head', $data);
+		$this->load->view('head', $data);
 		$this->load->view('landing/navbar');
 		$this->load->view('landing/privacy');
-		$this->load->view('landing/footer');
-		$this->load->view('landing/tail');
+		$this->load->view('footer');
+		$this->load->view('tail');
 	}
 }

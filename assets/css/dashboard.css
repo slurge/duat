@@ -1,0 +1,22 @@
+.main-container{
+    height: calc(100vh - 68px);
+}
+
+.dashboard-bar {
+    background-color: #232629;
+}
+
+.dashboard-bar .list-group-item-action {
+    background-color: #232629;
+    color: white;
+    border: none;
+}
+
+.dashboard-bar .list-group-item-action.active {
+    background-color: #b1dcfc;
+    color: #232629;
+}
+
+.dashboard-bar .list-group-item-action:focus, .list-group-item-action:hover {
+    background-color: #31353a;
+}

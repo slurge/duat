@@ -1,18 +1,4 @@
 <style>
-    .bg-black{
-        background-color: #232629 !important;
-    }
-    .nav-logo{
-        max-width:100%;
-        height: 50px;
-    }
-    .navbar-dark .navbar-nav .nav-link {
-        color: rgb(255, 255, 255, .75);
-    }
-    .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-        color: white;
-    }
-
     .modal-content {
         /* border-radius: 0.6em; */
         border: none !important;
