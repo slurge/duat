@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col p-3 align-items-center d-flex flex-column">
             <h1 class="display-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
-            <div class="text-left">
+            <div class="mt-5 w-100 text-left">
                 <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
             </div>
         </div>
@@ -89,7 +89,7 @@
         </div>
         <div class="row mb-5">
             <div class="col-md-2 offset-md-1 text-center">
-                <i class="fas fa-window-maximize" style="font-size:6em;"></i>
+                <i class="fas fa-browser" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
                 <p>Phasellus in purus venenatis, varius lectus ac, accumsan velit.</p>
@@ -104,6 +104,26 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container py-5 mt-3">
+    <h2 class="display-4 text-center mb-4">Pruébalo</h2>
+    <p class="text-center">Ahora mismo usted utiliza <strong><?= $ua['browser'] ?></strong> <?= $ua['version'] ?> en <strong><?= $ua['platform'] ?></strong></p>
+    
+    <div class="row py-5">
+        <div class="col-md-6">
+            <textarea class="form-control" name="abertext" id="abertext" cols="30" rows="10" placeholder="Escriba algo en este cuadro"></textarea>
+        </div>
+        <div class="col-md-6">
+            <p>Su cadencia promedio es:</p>
+        </div>
+    </div>
+
+    <p class="text-center mt-3">In libero quam, pellentesque et ipsum lobortis, consectetur vehicula ipsum. Mauris lobortis rhoncus tempor. Ut semper elit ac aliquet consequat Vestibulum nibh elit, pulvinar ac sollicitudin sed, vehicula quis odio.</p>
+    <div class="text-center py-5">
+        <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
+    </div>
+
 </div>
     
 

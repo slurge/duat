@@ -27,11 +27,17 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->library('user_agent');
 		$data = array(
 			'logo' => site_url('assets/img/eyes.png'),
 			'title' => 'Duauth Autenticador Inteligente',
 			'styles' => array(
 				site_url('assets/css/main.css')
+			),
+			'ua' => array(
+				'browser' => $this->agent->browser(),
+				'version' => $this->agent->version(),
+				'platform' => $this->agent->platform()
 			)
 		);
 		$this->load->view('head', $data);
