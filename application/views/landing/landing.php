@@ -21,7 +21,7 @@
 <div class="container-fluid head-landing px-5">
     <div class="row">
         <div class="col p-3 align-items-center d-flex flex-column">
-            <h1 class="display-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+            <h1 class="display-4">¿Tu pagina web necesita mayor seguridad?</h1>
             <div class="mt-5 w-100 text-left">
                 <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
             </div>
@@ -38,13 +38,13 @@
             <i class="fas fa-users" style="font-size:10em;"></i>
         </div>
         <div class="col-md-6 p-3 align-items-center d-flex">
-            <p>Nulla mauris nisl, vehicula sed pulvinar eget, facilisis sit amet augue. Nullam consectetur diam non elit aliquet, quis varius dolor aliquam.</p>
+            <p>Duauth es un sistema de autentificacion que garantiza la seguridad e integridad de los datos de tus usuarios.</p>
         </div>
     </div>
 
     <div class="row my-5">
         <div class="col-md-6 p-3 align-items-center d-flex">
-            <p>Duis id ante sit amet urna facilisis porta. Quisque sit amet nibh maximus, elementum purus non, auctor lectus. Fusce odio erat, rutrum iaculis tristique ut, finibus sed sapien.</p>
+            <p>Con Duauth evitaras el acceso de intrusos en las cuentas de personales de tus usuarios.</p>
         </div>
         <div class="col-md-6 p-3 text-center">
         <i class="fas fa-user-ninja" style="font-size:7em;"></i>
@@ -54,10 +54,10 @@
     </div>
     
     <div class="text-center">
-        <h2 class="display-4 mb-5">Nullam accumsan pellentesque convallis.</h2>
+        <h2 class="display-4 mb-5">Cada usuario cuenta con una autenticacion unica.</h2>
         <i class="fas fa-fingerprint mt-3" style="font-size:15em;"></i>
     </div>
-    <h3 class="my-5 text-center">Etiam vel ante tellus. Curabitur augue dolor, sodales nec dictum eget, facilisis eu sapien. Vestibulum ut enim et risus facilisis laoreet at et ante.</h3>
+    <h3 class="my-5 text-center">¡Captura los datos y deja que nuestra IA lo juzgue!</h3>
     <div class="row my-5">
         <div class="col text-center">
             <i class="fas fa-search" style="font-size:7em;"></i>
@@ -78,13 +78,13 @@
 
 <div class="container-fluid seccion-2">
     <div class="container py-5">
-        <h2 class="text-center my-5 display-4">Quisque nec erat et justo sagittis ultricies</h2>
+        <h2 class="text-center my-5 display-4">Un sofisticado algoritmo SVM clasifica a cada usuario por:</h2>
         <div class="row mb-5">
             <div class="col-md-2 offset-md-1 text-center">
                 <i class="fas fa-keyboard" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
-                <p>Suspendisse vulputate leo in massa convallis tincidunt a sed dui.</p>
+                <p>La cadencia al capturar sus credenciales.</p>
             </div>
         </div>
         <div class="row mb-5">
@@ -92,7 +92,7 @@
                 <i class="fas fa-browser" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
-                <p>Phasellus in purus venenatis, varius lectus ac, accumsan velit.</p>
+                <p>Los metadatos de indentificacion del dispositivo.</p>
             </div>
         </div>
         <div class="row">
@@ -100,7 +100,7 @@
                 <i class="fas fa-project-diagram" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
-                <p>Etiam sit amet massa vel ligula pulvinar hendrerit vitae scelerisque est.</p>
+                <p>(Aqui poner algo creativo)</p>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
         </div>
     </div>
 
-    <p class="text-center mt-3">In libero quam, pellentesque et ipsum lobortis, consectetur vehicula ipsum. Mauris lobortis rhoncus tempor. Ut semper elit ac aliquet consequat Vestibulum nibh elit, pulvinar ac sollicitudin sed, vehicula quis odio.</p>
+    <p class="text-center mt-3">La seguridad no es un lujo, es una necesidad, nosotros protegeremos las credenciales de sus usuarios!</p>
     <div class="text-center py-5">
         <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
     </div>
