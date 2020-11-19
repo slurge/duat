@@ -32,6 +32,17 @@ class Clients extends CI_Controller{
             redirect(site_url('clients/login'));
         }
 
+        $menu_options = array(
+            'home',
+            'sites',
+            'users',
+            'settings'
+        );
+
+        if (!in_array($menu, $menu_options)) {
+            $menu = 'home';
+        }
+
         $data = array(
             'logo' => site_url('assets/img/eyes.png'),
             'title' => 'Duauth - Dashboard',
@@ -44,15 +55,15 @@ class Clients extends CI_Controller{
                 'sites' => '',
                 'users' => '',
                 'settings' => '',
-            )
+            ),
+            'userdata' => $this->logged_user
         );
         $data['menu'][$menu] = ' active';
-        $data['userdata'] = $this->logged_user;
 
         $this->load->view('head', $data);
         $this->load->view('clients/navbar');
         $this->load->view('clients/dashboard-head');
-        $this->load->view('clients/dashpages/home');
+        $this->load->view('clients/dashpages/'.$menu);
         $this->load->view('clients/dashboard-tail');
         //$this->load->view('footer');
         $this->load->view('tail');
