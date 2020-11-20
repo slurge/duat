@@ -7,7 +7,7 @@ class Clients extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('clients_model');
-
+        $this->load->model('sites_model');
         $this->load->helper('form');
         $this->load->library('session');
 
@@ -164,6 +164,47 @@ class Clients extends CI_Controller{
     public function logout() {
 		$this->session->sess_destroy();
 		return redirect(site_url('clients/login'));
-	}
+    }
+    
+    public function sitessignup(){
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Dashboard',
+            'styles' => array(
+                site_url('assets/css/main.css'),
+                site_url('assets/css/dashboard.css')
+            ),
+            'menu' => array(
+                'home' => '',
+                'sites' => '',
+                'users' => '',
+                'settings' => '',
+            ),
+            'userdata' => $this->logged_user
+        );
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('url', 'URL del sitio', 'valid_url|is_unique[sites.url]');
+        $this->form_validation->set_rules('sitename', 'Nombre del sitio', 'trim|required');
+
+        if ($this->form_validation->run()) {
+            $site_data = array(
+                'client_id' => $this->logged_user['id'],
+                'name' => $this->input->post('sitename'),
+                'url' => $this->input->post('url'),
+                'status'=> 5
+            );
+            $succ = $this->sites_model->new($site_data);
+        }
+        
+        $this->load->view('head', $data);
+        $this->load->view('clients/navbar');
+        $this->load->view('clients/dashboard-head');
+        $this->load->view('clients/dashpages/sites-form');
+        $this->load->view('clients/dashboard-tail');
+        //$this->load->view('footer');
+        $this->load->view('tail');
+    }
     
 }
