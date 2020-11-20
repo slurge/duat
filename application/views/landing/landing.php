@@ -78,13 +78,13 @@
 
 <div class="container-fluid seccion-2">
     <div class="container py-5">
-        <h2 class="text-center my-5 display-4">Un sofisticado algoritmo SVM clasifica a cada usuario por:</h2>
+        <h2 class="text-center my-5 display-4">Un sofisticado algoritmo inteligente reconoce a cada usuario por:</h2>
         <div class="row mb-5">
             <div class="col-md-2 offset-md-1 text-center">
                 <i class="fas fa-keyboard" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
-                <p>La cadencia al capturar sus credenciales.</p>
+                <p>El modo en el cual se escribe.</p>
             </div>
         </div>
         <div class="row mb-5">
@@ -92,7 +92,7 @@
                 <i class="fas fa-browser" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
-                <p>Los metadatos de indentificacion del dispositivo.</p>
+                <p>El dispositivo con el cual navega por internet.</p>
             </div>
         </div>
         <div class="row">
@@ -100,7 +100,7 @@
                 <i class="fas fa-project-diagram" style="font-size:6em;"></i>
             </div>
             <div class="col align-items-center d-flex text-center">
-                <p>(Aqui poner algo creativo)</p>
+                <p>Análisis continuo y adaptativo de tus patrones, de modo que siempre sabremos si eres tú y te alertaremos en caso de que algo sea sospechoso</p>
             </div>
         </div>
     </div>
