@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-Header('Access-Control-Allow-Origin: *'); //for allow any domain, insecure
-Header('Access-Control-Allow-Headers: *'); //for allow any headers, insecure
-Header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE'); //method allowed
+Header('Access-Control-Allow-Origin: *'); 
+Header('Access-Control-Allow-Headers: *'); 
+Header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
 
 use UAParser\Parser;
 
@@ -87,6 +87,15 @@ class Api extends CI_Controller {
 
         //execute the POST request
         $result = curl_exec($ch);
+
+        if($result  === false)
+        {
+            $result = 'Curl error: ' . curl_error($ch);
+        }
+        else
+        {
+            echo 'Operación completada sin errores';
+        }
 
         //close cURL resource
         curl_close($ch);
