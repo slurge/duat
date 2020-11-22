@@ -15,24 +15,7 @@ class Api extends CI_Controller {
 
     public function index()
     {
-        return($this->aber());
-    }
-
-    public function aber()
-    {
-
-        $ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36';
-        $parser = Parser::create();
-        $result = $parser->parse($ua);
-
-        //https://github.com/ua-parser/uap-php
-        
-        /* echo $result->ua->toString();
-        echo $result->os->toString();
-        echo $result->device->family; */
-        print_r($result);
-
-
+        echo 'v1.0';
     }
 
     public function aberapi()
@@ -56,21 +39,17 @@ class Api extends CI_Controller {
     }
 
     public function validatoken($tokenajax){
-        $token_user_bueno = hash('sha256', '0');
+        $token_user_bueno = hash('sha256', '1');
         $sal = 'aber';
-        if($token_user_bueno == $tokenajax){
-            return true;
-        }else{
-            return false;
-        }
+        return $token_user_bueno == $tokenajax;
     }
 
     public function calc($data)
     {
-        $this->load->model('users_models');
+        $this->load->model('user_models');
         $this->load->model('datasets_model');
         $this->load->model('meta');
-        $user = $this->users_models->find_user($data['token'],$data['user']);
+        $user = $this->user_models->find_user($data['token'],$data['user']);
         //$count = $this->datasets_model->data_count($id_user);
         $data['user'] = $user['id'];
         /*if($count<30 || $count%30 == 0){
@@ -79,7 +58,7 @@ class Api extends CI_Controller {
         }else{
             return $this->usarcurl($data, 'predict');
         }*/
-        if($user['mode'] == $this->meta->id('fit'){
+        if($user['mode'] == $this->meta->id('fit')){
             return $this->usarcurl($data, 'fit');
         }else{
             return $this->usarcurl($data, 'predict');
@@ -114,10 +93,6 @@ class Api extends CI_Controller {
         if($result  === false)
         {
             $result = 'Curl error: ' . curl_error($ch);
-        }
-        else
-        {
-            echo 'Operación completada sin errores';
         }
 
         //close cURL resource

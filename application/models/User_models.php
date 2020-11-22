@@ -1,5 +1,5 @@
 <?php
-class Users_model extends CI_Model
+class User_models extends CI_Model
 {
     public function __construct()
 	{
@@ -37,11 +37,12 @@ class Users_model extends CI_Model
     
     public function find_user($token, $user_name)
 	{
-        $this->db->select('*');
+        /* $this->db->select('*');
         $this->db->from('User_models');
         $this->db->join('Sites', 'User_models.site_id = Sites.id');
-        $query = $this->db->get_where(['User_models.username' => $user_name,
-        'Sites.token' => $token]);
+        $query = $this->db->get(['User_models.username' => $user_name,
+		'Sites.token' => $token]); */
+		$query = $this->db->query('SELECT * FROM User_models join Sites ON User_models.site_id = Sites.id WHERE User_models.username = \''.$user_name.'\' AND Sites.token = \''.$token.'\'');
 		return (
 			$query ?
 				$query->row_array() : NULL
