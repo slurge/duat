@@ -12,7 +12,12 @@ class Sites_model extends CI_model
     public function new($data)
 	{
 		$data['created_at'] = date("Y-m-d H:i:s");
-		return $this->db->insert($this->table, $data);
+		$result = $this->db->insert($this->table, $data);
+		$id = $this->db->insert_id();
+		$token = hash('sha256', $id.SAL);
+		$this->db->set(['token' => $token]);
+		$this->db->where('id', $id);
+		return $this->db->update($this->table) && $result;
 	}
 
 	public function update($site_id, $data)
