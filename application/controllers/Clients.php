@@ -31,18 +31,23 @@ class Clients extends CI_Controller{
         if (!$this->logged_user) {
             redirect(site_url('clients/login'));
         }
-
-        $menu_options = array(
-            'home',
-            'sites',
-            'users',
-            'settings'
-        );
-
-        if (!in_array($menu, $menu_options)) {
-            $menu = 'home';
+        
+        switch($menu){
+            case 'home':
+                break;
+            case 'sites':
+                return $this->dashboardsites();
+                break;
+            case 'users':
+                break;
+            case 'settings':
+                break;
         }
+    }
 
+    public function dashboardsites(){
+        $this->load->model('sites_model');
+        $sitios = $this->sites_model->get_all( $this->logged_user['id'] ) ;
         $data = array(
             'logo' => site_url('assets/img/eyes.png'),
             'title' => 'Duauth - Dashboard',
@@ -52,21 +57,20 @@ class Clients extends CI_Controller{
             ),
             'menu' => array(
                 'home' => '',
-                'sites' => '',
+                'sites' => ' is-active',
                 'users' => '',
                 'settings' => '',
             ),
-            'userdata' => $this->logged_user
+            'userdata' => $this->logged_user,
+            'sites' => $sitios
         );
-        $data['menu'][$menu] = ' active';
-
         $this->load->view('head', $data);
         $this->load->view('clients/navbar');
         $this->load->view('clients/dashboard-head');
-        $this->load->view('clients/dashpages/'.$menu);
+        $this->load->view('clients/dashpages/sites', $data);
         $this->load->view('clients/dashboard-tail');
-        //$this->load->view('footer');
         $this->load->view('tail');
+
     }
 
     public function signup()
