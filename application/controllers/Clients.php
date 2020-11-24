@@ -31,42 +31,18 @@ class Clients extends CI_Controller{
         if (!$this->logged_user) {
             redirect(site_url('clients/login'));
         }
-
-        $menu_options = array(
-            'home',
-            'sites',
-            'users',
-            'settings'
-        );
-
-        if (!in_array($menu, $menu_options)) {
-            $menu = 'home';
+        
+        switch($menu){
+            case 'home':
+                break;
+            case 'sites':
+                return $this->dashboardsites();
+                break;
+            case 'users':
+                break;
+            case 'settings':
+                break;
         }
-
-        $data = array(
-            'logo' => site_url('assets/img/eyes.png'),
-            'title' => 'Duauth - Dashboard',
-            'styles' => array(
-                site_url('assets/css/main.css'),
-                site_url('assets/css/dashboard.css')
-            ),
-            'menu' => array(
-                'home' => '',
-                'sites' => '',
-                'users' => '',
-                'settings' => '',
-            ),
-            'userdata' => $this->logged_user
-        );
-        $data['menu'][$menu] = ' active';
-
-        $this->load->view('head', $data);
-        $this->load->view('clients/navbar');
-        $this->load->view('clients/dashboard-head');
-        $this->load->view('clients/dashpages/'.$menu);
-        $this->load->view('clients/dashboard-tail');
-        //$this->load->view('footer');
-        $this->load->view('tail');
     }
 
     public function dashboardsites(){

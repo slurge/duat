@@ -3,9 +3,14 @@
     <a href="<?= site_url('clients/sitessignup') ?>">Registrar sitio</a>
     <div>
         <ul>
-            <?php foreach($sites as $site); ?>
-            <li><?= $site->name; ?></li>
-            <?php endforeach; ?>
+            <?php if($sites):?>
+                <?php foreach($sites as $site): ?>
+                <li><?= $site->name; ?></li>
+                <?php endforeach; ?>
+            <?php else: ?>
+            <li>No hay sitios</li>
+            <?php endif; ?>
+            
         </ul>
     </div>
     
