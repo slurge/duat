@@ -69,6 +69,34 @@ class Clients extends CI_Controller{
         $this->load->view('tail');
     }
 
+    public function dashboardsites(){
+        $this->load->model('sites_model');
+        $sitios = $this->sites_model->get_all( $this->logged_user['id'] ) ;
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Dashboard',
+            'styles' => array(
+                site_url('assets/css/main.css'),
+                site_url('assets/css/dashboard.css')
+            ),
+            'menu' => array(
+                'home' => '',
+                'sites' => ' is-active',
+                'users' => '',
+                'settings' => '',
+            ),
+            'userdata' => $this->logged_user,
+            'sites' => $sitios
+        );
+        $this->load->view('head', $data);
+        $this->load->view('clients/navbar');
+        $this->load->view('clients/dashboard-head');
+        $this->load->view('clients/dashpages/sites', $data);
+        $this->load->view('clients/dashboard-tail');
+        $this->load->view('tail');
+
+    }
+
     public function signup()
     {
         $this->load->library('form_validation');
