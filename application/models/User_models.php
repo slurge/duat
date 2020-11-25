@@ -42,12 +42,13 @@ class User_models extends CI_Model
         $this->db->join('Sites', 'User_models.site_id = Sites.id');
         $query = $this->db->get(['User_models.username' => $user_name,
 		'Sites.token' => $token]); */
-		$query = $this->db->query('SELECT * FROM User_models join Sites ON User_models.site_id = Sites.id WHERE User_models.username = \''.$user_name.'\' AND Sites.token = \''.$token.'\'');
+		$query = $this->db->query('SELECT User_models.id, User_models.mode FROM User_models join Sites ON User_models.site_id = Sites.id WHERE User_models.username = \''.$user_name.'\' AND Sites.token = \''.$token.'\'');
 		return (
 			$query ?
 				$query->row_array() : NULL
 		);  
 	}
+
 
 	/**
 	 * @param string $type Type of client to query for
@@ -55,8 +56,14 @@ class User_models extends CI_Model
 	 * 
 	 * @return mixed Array of objects containing all matching records, NULL otherwise
 	 */
-	public function get_all($type = NULL, $not_in = NULL)
+	public function get_all($site_id = NULL, $not_in = NULL)
 	{
+		if ( $site_id )
+		{ 
+			$query_args = array( 'site_id' => $site_id );
+			$this->db->where($query_args);
+		}
+
 		$this->db->select('User_models.*');
 
 		if ( $not_in && is_array($not_in) )

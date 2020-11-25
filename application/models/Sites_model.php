@@ -41,6 +41,36 @@ class Sites_model extends CI_model
 		);
 	}
 
+	public function get_sites_as_assoc($client_id, $not_in = NULL)
+	{
+
+		$sitios = $this->get_all($client_id, $not_in);
+
+		$base = array( '' => 'Seleccione un sitio' );
+
+		if ( $sitios ) {
+			return array_reduce($sitios, function($list, $row) {
+				$list[$row->id] = $row->name; 
+				return $list;
+			}, $base);
+		}
+
+		return NULL;
+	}
+
+	public function get_users_per_site($client_id)
+	{
+		$this->load->model('user_models');
+		$sites = $this->get_all($client_id);
+		$res = [];
+		if($sites){
+			foreach ($sites as $site ) {
+				$res[$site->name] = $this->user_models->get_all($site->id);
+			}
+		}
+		return $res;
+	}
+
     /**
 	 * @param string $type Type of client to query for
 	 * @param array $not_in Excluding filter based on an array of associative $field => $value filters

@@ -7,7 +7,6 @@ class Clients extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('clients_model');
-        $this->load->model('sites_model');
         $this->load->helper('form');
         $this->load->library('session');
 
@@ -34,15 +33,102 @@ class Clients extends CI_Controller{
         
         switch($menu){
             case 'home':
+                return $this->dashboardhome();
                 break;
             case 'sites':
                 return $this->dashboardsites();
                 break;
             case 'users':
+                return $this->dashboardusers();
                 break;
             case 'settings':
+                return $this->dashboardsettings();
                 break;
+            default:
+                return $this->dashboardhome();
         }
+    }
+
+    public function dashboardhome()
+    {
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Dashboard',
+            'styles' => array(
+                site_url('assets/css/main.css'),
+                site_url('assets/css/dashboard.css')
+            ),
+            'menu' => array(
+                'home' => ' active',
+                'sites' => '',
+                'users' => '',
+                'settings' => '',
+            ),
+            'userdata' => $this->logged_user,
+        );
+        $this->load->view('head', $data);
+        $this->load->view('clients/navbar');
+        $this->load->view('clients/dashboard-head');
+        $this->load->view('clients/dashpages/home', $data);
+        $this->load->view('clients/dashboard-tail');
+        $this->load->view('tail');
+    }
+
+    public function dashboardusers()
+    {
+        $this->load->helper('form');
+        $this->load->model('sites_model');
+        $sitios = $this->sites_model->get_sites_as_assoc( $this->logged_user['id']);
+        $users_per_site = $this->sites_model->get_users_per_site($this->logged_user['id']);
+
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Dashboard',
+            'styles' => array(
+                site_url('assets/css/main.css'),
+                site_url('assets/css/dashboard.css')
+            ),
+            'menu' => array(
+                'home' => '',
+                'sites' => '',
+                'users' => ' active',
+                'settings' => '',
+            ),
+            'userdata' => $this->logged_user,
+            'sites' => $sitios,
+            'userlist' => $users_per_site
+        );
+        $this->load->view('head', $data);
+        $this->load->view('clients/navbar');
+        $this->load->view('clients/dashboard-head');
+        $this->load->view('clients/dashpages/users', $data);
+        $this->load->view('clients/dashboard-tail');
+        $this->load->view('tail');
+    }
+
+    public function dashboardsettings()
+    {
+        $data = array(
+            'logo' => site_url('assets/img/eyes.png'),
+            'title' => 'Duauth - Dashboard',
+            'styles' => array(
+                site_url('assets/css/main.css'),
+                site_url('assets/css/dashboard.css')
+            ),
+            'menu' => array(
+                'home' => '',
+                'sites' => '',
+                'users' => '',
+                'settings' => ' active',
+            ),
+            'userdata' => $this->logged_user,
+        );
+        $this->load->view('head', $data);
+        $this->load->view('clients/navbar');
+        $this->load->view('clients/dashboard-head');
+        $this->load->view('clients/dashpages/settings', $data);
+        $this->load->view('clients/dashboard-tail');
+        $this->load->view('tail');
     }
 
     public function dashboardsites(){
@@ -57,7 +143,7 @@ class Clients extends CI_Controller{
             ),
             'menu' => array(
                 'home' => '',
-                'sites' => ' is-active',
+                'sites' => ' active',
                 'users' => '',
                 'settings' => '',
             ),
@@ -171,22 +257,7 @@ class Clients extends CI_Controller{
     }
     
     public function sitessignup(){
-        $data = array(
-            'logo' => site_url('assets/img/eyes.png'),
-            'title' => 'Duauth - Dashboard',
-            'styles' => array(
-                site_url('assets/css/main.css'),
-                site_url('assets/css/dashboard.css')
-            ),
-            'menu' => array(
-                'home' => '',
-                'sites' => '',
-                'users' => '',
-                'settings' => '',
-            ),
-            'userdata' => $this->logged_user
-        );
-
+        $this->load->model('sites_model');
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('url', 'URL del sitio', 'valid_url|is_unique[sites.url]');
@@ -199,16 +270,28 @@ class Clients extends CI_Controller{
                 'url' => $this->input->post('url'),
                 'status'=> 5
             );
-            $succ = $this->sites_model->new($site_data);
+            $succ = $this->sites_model->new($site_data);  
         }
-        
-        $this->load->view('head', $data);
-        $this->load->view('clients/navbar');
-        $this->load->view('clients/dashboard-head');
-        $this->load->view('clients/dashpages/sites-form');
-        $this->load->view('clients/dashboard-tail');
-        //$this->load->view('footer');
-        $this->load->view('tail');
+        return redirect(site_url('clients/dashboard/sites'));
     }
+
+    public function add_user(){
+        $this->load->model('user_models');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('username', 'Nombre de usuario', 'trim|required');
+        $this->form_validation->set_rules('site', 'Nombre del sitio', 'required');
+
+        if ($this->form_validation->run()) {
+            $user_data = array(
+                'site_id' => $this->input->post('site'),
+                'username' => $this->input->post('username')
+            );
+            $succ = $this->user_models->new($user_data);  
+        }
+        return redirect(site_url('clients/dashboard/users'));
+    }
+
+
     
 }

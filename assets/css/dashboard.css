@@ -20,3 +20,8 @@
 .dashboard-bar .list-group-item-action:focus, .list-group-item-action:hover {
     background-color: #31353a;
 }
+
+.site-header {
+    background-color: #16324f;
+    color: white;
+}

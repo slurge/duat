@@ -39,7 +39,7 @@ class Api extends CI_Controller {
     }
 
     public function validatoken($tokenajax){
-        $token_user_bueno = hash('sha256', '1');
+        $token_user_bueno = '50e3a98aa53216d4c6faf15a9b250061851caef33be7e5a7a7bef961ce2cefcf';
         $sal = 'aber';
         return $token_user_bueno == $tokenajax;
     }
@@ -51,6 +51,9 @@ class Api extends CI_Controller {
         $this->load->model('meta');
         $user = $this->user_models->find_user($data['token'],$data['user']);
         //$count = $this->datasets_model->data_count($id_user);
+        if (!$user) {
+            return 'Error: no existe ese usuario';
+        }
         $data['user'] = $user['id'];
         /*if($count<30 || $count%30 == 0){
             return $this->usarcurl($data, 'fit');

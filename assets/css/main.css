@@ -109,3 +109,15 @@ span.input-group-text {
     border-color: #901c14;
     color: white;
 }
+
+.btn-success {
+    color: #fff;
+    background-color: #355834;
+    border-color: #355834;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #901c14;
+    border-color: #901c14;
+}
