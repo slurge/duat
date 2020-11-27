@@ -21,9 +21,9 @@
 <div class="container-fluid head-landing px-5">
     <div class="row">
         <div class="col p-3 align-items-center d-flex flex-column">
-            <h1 class="display-4">¿Tu pagina web necesita mayor seguridad?</h1>
+            <h1 class="display-4">Blindaje para iniciar sesión en tu página web</h1>
             <div class="mt-5 w-100 text-left">
-                <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
+                <a href="<?= site_url('clients/signup') ?>" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
             </div>
         </div>
         <div class="col p-3 text-center">
@@ -71,7 +71,7 @@
     </div>
 
     <div class="text-center">
-        <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
+        <a href="<?= site_url('clients/signup') ?>" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
     </div>
     
 </div>
@@ -121,7 +121,7 @@
 
     <p class="text-center mt-3">La seguridad no es un lujo, es una necesidad, nosotros protegeremos las credenciales de sus usuarios!</p>
     <div class="text-center py-5">
-        <a href="#" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
+        <a href="<?= site_url('clients/signup') ?>" class="btn cta">Quiero darle seguridad a mi sitio <i class="fas fa-shield-check"></i></a>
     </div>
 
 </div>

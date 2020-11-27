@@ -2,7 +2,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3 py-5">
-            <form action="<?= site_url('clients/signup') ?>" method="post" class="py-5">
+            <form action="<?= site_url('clients/signup') ?>" method="post" class="py-4">
+                <h2>Crear cuenta en Duauth</h2>
                 <div class="form-group">
                     <label for="mail">Correo electrónico</label>
                     <?php $v = form_error('mail') ? ' is-invalid' : ''; ?> 

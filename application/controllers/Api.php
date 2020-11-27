@@ -11,6 +11,7 @@ class Api extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('sites_model');
     }
 
     public function index()
@@ -39,9 +40,7 @@ class Api extends CI_Controller {
     }
 
     public function validatoken($tokenajax){
-        $token_user_bueno = '50e3a98aa53216d4c6faf15a9b250061851caef33be7e5a7a7bef961ce2cefcf';
-        $sal = 'aber';
-        return $token_user_bueno == $tokenajax;
+        return $this->sites_model->get($tokenajax, 'token');
     }
 
     public function calc($data)
@@ -69,7 +68,6 @@ class Api extends CI_Controller {
     }
 
     public function usarcurl($data, $metodo){
-        $this->load->model('sites_model');
         $sitio = $this->sites_model->get($data['token'],'token');
         $url = 'http://localhost:8000/'.$metodo;
         $ch = curl_init($url);
@@ -96,10 +94,12 @@ class Api extends CI_Controller {
         if($result  === false)
         {
             $result = 'Curl error: ' . curl_error($ch);
+        }else{
+            $result = json_decode($result, true);
+            $result = $result['is_user'];
         }
-
-        //close cURL resource
         curl_close($ch);
+        //close cURL resource
         return $result;
     }
     
